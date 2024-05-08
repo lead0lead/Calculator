@@ -20,117 +20,122 @@ const BUTTON_CLEAR = document.getElementById("button-clear");
 
 const DISPLAYED_VALUE = document.getElementById("result");
 
-let displayValue;
-
 let firstNumber = 0;
 
 let secondNumber = 0;
 
-let operator;
+let operator = "+";
 
 let operatorPressed = false;
 
 function populateDisplay(number){
-    displayValue = number;
-    DISPLAYED_VALUE.textContent=number;
+    DISPLAYED_VALUE.textContent=number.toFixed(2);
+}
+
+function updateNumbers(inputNumber){
+    if (operatorPressed == false){
+        firstNumber = Number(`${firstNumber}` +`${inputNumber}`);
+        populateDisplay(firstNumber);
+    }
+    else{
+        secondNumber = Number(`${secondNumber}` +`${inputNumber}`);
+        populateDisplay(secondNumber);
+    }
 }
 
 BUTTON_ZERO.addEventListener("click", () => {
-    if (operatorPressed == false){
-        firstNumber = 0;
-    populateDisplay(firstNumber)}
-    else{
-        secondNumber = 0;
-    }});
+    updateNumbers(0);
+});
 
 BUTTON_ONE.addEventListener("click", () => {
-    if (operatorPressed == false){
-        firstNumber = 1;
-    populateDisplay(firstNumber)}
-    else{
-        secondNumber = 1;
-    }});
+    updateNumbers(1);
+});
 
 BUTTON_TWO.addEventListener("click", () => {
-    if (operatorPressed == false){
-        firstNumber = 2;
-    populateDisplay(firstNumber)}
-    else{
-        secondNumber = 2;
-    }});
+    updateNumbers(2);
+});
 
 BUTTON_THREE.addEventListener("click", () => {
-    if (operatorPressed == false){
-        firstNumber = 3;
-    populateDisplay(firstNumber)}
-    else{
-        secondNumber = 3;
-    }});
+    updateNumbers(3);
+});
 
 BUTTON_FOUR.addEventListener("click", () => {
-    if (operatorPressed == false){
-        firstNumber = 4;
-    populateDisplay(firstNumber)}
-    else{
-        secondNumber = 4;
-    }});
+    updateNumbers(4);
+});
 
 BUTTON_FIVE.addEventListener("click", () => {
-    if (operatorPressed == false){
-        firstNumber = 5;
-    populateDisplay(firstNumber)}
-    else{
-        secondNumber = 5;
-    }});
+    updateNumbers(5);
+    });
 
 BUTTON_SIX.addEventListener("click", () => {
-    if (operatorPressed == false){
-        firstNumber = 6;
-    populateDisplay(firstNumber)}
-    else{
-        secondNumber = 6;
-    }});
+    updateNumbers(6);
+    });
 
 BUTTON_SEVEN.addEventListener("click", () => {
-    if (operatorPressed == false){
-        firstNumber = 7;
-    populateDisplay(firstNumber)}
-    else{
-        secondNumber = 7;
-    }});
+    updateNumbers(7);
+    });
 
 BUTTON_EIGHT.addEventListener("click", () => {
-    if (operatorPressed == false){
-        firstNumber = 8;
-    populateDisplay(firstNumber)}
-    else{
-        secondNumber = 8;
-    }});
+    updateNumbers(8);
+    });
 
 BUTTON_NINE.addEventListener("click", () => {
-    if (operatorPressed == false){
-        firstNumber = 9;
-    populateDisplay(firstNumber)}
+    updateNumbers(9);
+    });
+
+
+BUTTON_ADD.addEventListener("click", () => {
+    if (operatorPressed==false){
+        operatorPressed = true;
+    }
     else{
-        secondNumber = 9;
-    }});
+        firstNumber = operate(operator, firstNumber, secondNumber);
+        populateDisplay(firstNumber);
+        secondNumber = 0;
+    }
+    operator = "+";
+});
 
+BUTTON_SUBTRACT.addEventListener("click", () => {
+    if (operatorPressed==false){
+        operatorPressed = true;
+    }
+    else{
+        firstNumber = operate(operator, firstNumber, secondNumber);
+        populateDisplay(firstNumber);
+        secondNumber = 0;
+    }
+    operator = "-"; 
+});
 
-BUTTON_ADD.addEventListener("click", () => {operator = "+"; 
-operatorPressed = true;});
+BUTTON_MULTIPLY.addEventListener("click", () => {
+    if (operatorPressed==false){
+        operatorPressed = true;
+    }
+    else{
+        firstNumber = operate(operator, firstNumber, secondNumber);
+        populateDisplay(firstNumber);
+        secondNumber = 0;
+    }
+    operator = "*";
+});
 
-BUTTON_SUBTRACT.addEventListener("click", () => {operator = "-"; 
-operatorPressed = true;});
-
-BUTTON_MULTIPLY.addEventListener("click", () => {operator = "*"; 
-operatorPressed = true;});
-
-BUTTON_DIVIDE.addEventListener("click", () => {operator = "/"; 
-operatorPressed = true;});
+BUTTON_DIVIDE.addEventListener("click", () => {
+    if (operatorPressed==false){
+        operatorPressed = true;
+    }
+    else{
+        firstNumber = operate(operator, firstNumber, secondNumber);
+        populateDisplay(firstNumber);
+        secondNumber = 0;
+    }
+    operator = "/"; 
+});
 
 BUTTON_EQUALS.addEventListener("click", () => {
-    populateDisplay(operate(operator, firstNumber, secondNumber));
-    operatorPressed = false;
+    firstNumber = operate(operator, firstNumber, secondNumber);
+    populateDisplay(firstNumber);
+    secondNumber = 0;
 });
 
 BUTTON_CLEAR.addEventListener("click", () => {
@@ -153,7 +158,14 @@ function multiply(a, b){
 }
 
 function divide(a, b){
+    if (b !== 0){
     return a / b;
+    }
+
+    else{
+        alert("Cannot divide by ZERO!");
+        return a;
+    }
 }
 
 function operate(operator, firstNumber, secondNumber){
