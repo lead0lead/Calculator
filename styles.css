@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    font-size: 24px;
+    font-family: sans-serif;
+}
+
+
+#page-container{
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator-container{
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 5px 12px grey;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#result-display{
+    border-radius: 16px;
+    padding: 4px 8px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    background-color: lightgray;
+    flex-grow: 1;
+}
+
+#result{
+    text-align: end;
+}
+
+button{
+    border-radius: 16px;
+    padding: 4px 8px;
+    border: none;
+    width: 32px;
+}
+
+#button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.button-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 4px;
+}
+
+.number-button{
+    background-color: lightgray;
+    flex-grow: 1;
+}
+
+.operator-button{
+    background-color: gray;
+    flex-grow: 1
+}
+
+#button-equals{
+    background-color: lightsalmon;
+    flex-grow: 1;
+}
+
+#button-clear{
+    margin-left: auto;
+    background-color: lightsalmon;
+}
+
+#button-add{
+    flex-grow: 0;
+}
+
+#button-00{
+    flex-grow: 0;
+}
