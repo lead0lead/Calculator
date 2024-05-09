@@ -22,14 +22,15 @@
     align-items: center;
     justify-content: center;
     gap: 12px;
+    background-color: lightgray;
 }
 
 #result-display{
     border-radius: 16px;
     padding: 4px 8px;
     width: 100%;
-    border: 1px solid lightgrey;
-    background-color: lightgray;
+    border: 1px solid lightslategray;
+    background-color: lightslategray;
     flex-grow: 1;
 }
 
@@ -43,7 +44,9 @@ button{
     border: none;
     width: 32px;
 }
-
+button:hover{
+    opacity: 0.8;
+}
 #button-container{
     display: flex;
     align-items: center;
@@ -63,7 +66,7 @@ button{
 }
 
 .number-button{
-    background-color: lightgray;
+    background-color: lightslategray;
     flex-grow: 1;
 }
 
